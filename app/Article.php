@@ -3,16 +3,9 @@
 use Illuminate\Database\Eloquent\Model;
 
 
+
 /**
- * Class Article
- *
- * @package App
- *
- * @SWG\Definition(
- *   definition="Article",
- *   required={"title"}
- * )
- *
+ * @SWG\Definition(required={"title", "content"}, @SWG\Xml(name="Pet"))
  */
 class Article extends Model {
 

@@ -16,7 +16,7 @@ use Laravel\Lumen\Routing\Controller as BaseController;
  *     @SWG\Info(
  *         version="1.0",
  *         title="Rest API",
- *         @SWG\Contact(name="Marco Raddatz", url="https://www.marcoraddatz.com"),
+ *         @SWG\Contact(name="Md Amjad hossain", url=""),
  *     ),
  *     @SWG\Definition(
  *         definition="Error",

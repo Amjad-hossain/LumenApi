@@ -17,16 +17,88 @@
         "api/article": {
             "get": {
                 "tags": [
-                    "article"
+                    "Article"
                 ],
-                "description": "Returns artoc;e overview.",
-                "operationId": "api.dashboard.index",
+                "summary": "Find All Articles",
+                "description": "Returns article overview.",
+                "operationId": "index",
                 "produces": [
+                    "application/xml",
                     "application/json"
                 ],
                 "responses": {
                     "200": {
-                        "description": "Dashboard overview."
+                        "description": "Article overview."
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "Save Articles",
+                "description": "",
+                "operationId": "saveArticle",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Articles that needs to be added to the store",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Article"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Article overview."
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            }
+        },
+        "api/article/{id}": {
+            "get": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "Find All Articles",
+                "description": "Returns article overview.",
+                "operationId": "index",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id to filter by",
+                        "required": false,
+                        "type": "string",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Article overview."
                     },
                     "401": {
                         "description": "Unauthorized action."
