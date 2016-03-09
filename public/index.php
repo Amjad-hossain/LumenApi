@@ -24,7 +24,7 @@ $app = require __DIR__.'/../bootstrap/app.php';
 | and wonderful application we have prepared for them.
 |
 */
-//php -S localhost:8080 -t ./public
+//  php -S localhost:8080 -t ./public
 // ./vendor/bin/swagger /home/coder/api/app/Http --output public/
 
 $app->run();

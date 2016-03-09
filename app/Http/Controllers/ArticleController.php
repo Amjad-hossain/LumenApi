@@ -117,6 +117,35 @@ class ArticleController extends Controller {
 
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @SWG\Delete(
+     *   path="api/article/{id}",
+     *   tags={"Article"},
+     *   summary="Delete article",
+     *   description="",
+     *   operationId="deleteArticle",
+     *     consumes={"application/xml", "application/json", "multipart/form-data", "application/x-www-form-urlencoded"},
+     *     produces={"application/xml", "application/json"},
+     *     tags={"Article"},
+     *     @SWG\Parameter(
+     *         description="Article id to delete",
+     *         in="path",
+     *         name="id",
+     *         required=true,
+     *         type="integer",
+     *         format="int64"
+     *     ),
+     *
+     *     @SWG\Response(
+     *         response=400,
+     *         description="Invalid pet value"
+     *     )
+     * )
+     */
     public function deleteArticle($id){
         $article  = Article::find($id);
 
