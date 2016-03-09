@@ -55,7 +55,7 @@
                         "name": "body",
                         "in": "body",
                         "description": "Articles that needs to be added to the store",
-                        "required": false,
+                        "required": true,
                         "schema": {
                             "$ref": "#/definitions/Article"
                         }
@@ -88,7 +88,7 @@
                         "name": "id",
                         "in": "path",
                         "description": "Id to filter by",
-                        "required": false,
+                        "required": true,
                         "type": "string",
                         "items": {
                             "type": "string"
@@ -102,6 +102,96 @@
                     },
                     "401": {
                         "description": "Unauthorized action."
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "Update an existing article",
+                "description": "",
+                "operationId": "updateArticle",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id to filter by",
+                        "required": true,
+                        "type": "string",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Article object that needs to be added to the store",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Article"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid ID supplied"
+                    },
+                    "404": {
+                        "description": "Pet not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    }
+                },
+                "security": [
+                    {
+                        "petstore_auth": [
+                            "write:pets",
+                            "read:pets"
+                        ]
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Article"
+                ],
+                "summary": "Delete article",
+                "description": "",
+                "operationId": "deleteArticle",
+                "consumes": [
+                    "application/xml",
+                    "application/json",
+                    "multipart/form-data",
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Article id to delete",
+                        "required": true,
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid pet value"
                     }
                 }
             }

@@ -57,7 +57,7 @@ class ArticleController extends Controller {
      *         name="id",
      *         in="path",
      *         description="Id to filter by",
-     *         required=false,
+     *         required=true,
      *         type="string",
      *         @SWG\Items(type="string"),
      *         collectionFormat="multi"
@@ -95,7 +95,7 @@ class ArticleController extends Controller {
      *         name="body",
      *         in="body",
      *         description="Articles that needs to be added to the store",
-     *         required=false,
+     *         required=true,
      *         @SWG\Schema(ref="#/definitions/Article"),
      *     ),
      *     @SWG\Response(
@@ -154,6 +154,46 @@ class ArticleController extends Controller {
         return response()->json('success');
     }
 
+    /**
+     * @SWG\Put(
+     *     path="api/article/{id}",
+     *     tags={"Article"},
+     *     operationId="updateArticle",
+     *     summary="Update an existing article",
+     *     description="",
+     *     consumes={"application/json", "application/xml"},
+     *     produces={"application/xml", "application/json"},
+     *     @SWG\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="Id to filter by",
+     *         required=true,
+     *         type="string",
+     *         @SWG\Items(type="string"),
+     *         collectionFormat="multi"
+     *     ),
+     *     @SWG\Parameter(
+     *         name="body",
+     *         in="body",
+     *         description="Article object that needs to be added to the store",
+     *         required=true,
+     *         @SWG\Schema(ref="#/definitions/Article"),
+     *     ),
+     *     @SWG\Response(
+     *         response=400,
+     *         description="Invalid ID supplied",
+     *     ),
+     *     @SWG\Response(
+     *         response=404,
+     *         description="Pet not found",
+     *     ),
+     *     @SWG\Response(
+     *         response=405,
+     *         description="Validation exception",
+     *     ),
+     *     security={{"petstore_auth":{"write:pets", "read:pets"}}}
+     * )
+     */
     public function updateArticle(Request $request,$id){
         $article  = Article::find($id);
 
