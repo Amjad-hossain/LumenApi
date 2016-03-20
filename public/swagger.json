@@ -14,13 +14,13 @@
         "http"
     ],
     "paths": {
-        "api/article": {
+        "api/household": {
             "get": {
                 "tags": [
-                    "Article"
+                    "HouseHoldActivities"
                 ],
-                "summary": "Find All Articles",
-                "description": "Returns article overview.",
+                "summary": "Find All HouseHoldActivitiess",
+                "description": "Returns HouseHoldActivities overview.",
                 "operationId": "index",
                 "produces": [
                     "application/xml",
@@ -28,7 +28,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Article overview."
+                        "description": "HouseHoldActivities overview."
                     },
                     "401": {
                         "description": "Unauthorized action."
@@ -37,11 +37,11 @@
             },
             "post": {
                 "tags": [
-                    "Article"
+                    "HouseHoldActivities"
                 ],
-                "summary": "Save Articles",
+                "summary": "Save HouseHoldActivitiess",
                 "description": "",
-                "operationId": "saveArticle",
+                "operationId": "saveHouseHoldActivities",
                 "consumes": [
                     "application/json",
                     "application/xml"
@@ -54,16 +54,16 @@
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "Articles that needs to be added to the store",
+                        "description": "HouseHoldActivitiess that needs to be added to the store",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/Article"
+                            "$ref": "#/definitions/HouseHoldActivities"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Article overview."
+                        "description": "HouseHoldActivities overview."
                     },
                     "401": {
                         "description": "Unauthorized action."
@@ -71,13 +71,13 @@
                 }
             }
         },
-        "api/article/{id}": {
+        "api/household/{household_unique_code}": {
             "get": {
                 "tags": [
-                    "Article"
+                    "HouseHoldActivities"
                 ],
-                "summary": "Find All Articles",
-                "description": "Returns article overview.",
+                "summary": "Find All HouseHoldActivitiess",
+                "description": "Returns HouseHoldActivities overview.",
                 "operationId": "index",
                 "produces": [
                     "application/xml",
@@ -85,9 +85,9 @@
                 ],
                 "parameters": [
                     {
-                        "name": "id",
+                        "name": "household_unique_code",
                         "in": "path",
-                        "description": "Id to filter by",
+                        "description": "household_unique_code to filter by",
                         "required": true,
                         "type": "string",
                         "items": {
@@ -98,77 +98,22 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Article overview."
+                        "description": "HouseHoldActivities overview."
                     },
                     "401": {
                         "description": "Unauthorized action."
                     }
                 }
-            },
-            "put": {
-                "tags": [
-                    "Article"
-                ],
-                "summary": "Update an existing article",
-                "description": "",
-                "operationId": "updateArticle",
-                "consumes": [
-                    "application/json",
-                    "application/xml"
-                ],
-                "produces": [
-                    "application/xml",
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Id to filter by",
-                        "required": true,
-                        "type": "string",
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "multi"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Article object that needs to be added to the store",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/Article"
-                        }
-                    }
-                ],
-                "responses": {
-                    "400": {
-                        "description": "Invalid ID supplied"
-                    },
-                    "404": {
-                        "description": "Pet not found"
-                    },
-                    "405": {
-                        "description": "Validation exception"
-                    }
-                },
-                "security": [
-                    {
-                        "petstore_auth": [
-                            "write:pets",
-                            "read:pets"
-                        ]
-                    }
-                ]
-            },
+            }
+        },
+        "api/household/{id}": {
             "delete": {
                 "tags": [
-                    "Article"
+                    "HouseHoldActivities"
                 ],
-                "summary": "Delete article",
+                "summary": "Delete HouseHoldActivities",
                 "description": "",
-                "operationId": "deleteArticle",
+                "operationId": "deleteHouseHoldActivities",
                 "consumes": [
                     "application/xml",
                     "application/json",
@@ -183,7 +128,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Article id to delete",
+                        "description": "HouseHoldActivities id to delete",
                         "required": true,
                         "type": "integer",
                         "format": "int64"
@@ -194,6 +139,404 @@
                         "description": "Invalid pet value"
                     }
                 }
+            }
+        },
+        "api/household/characteristics/{household_unique_code}": {
+            "put": {
+                "tags": [
+                    "HouseHoldActivities"
+                ],
+                "summary": "Update an existing HouseHoldActivities",
+                "description": "",
+                "operationId": "updateHouseHoldActivities",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "household_unique_code",
+                        "in": "path",
+                        "description": "household_unique_code to filter by",
+                        "required": true,
+                        "type": "string",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "HouseHoldActivities object that needs to be added to the store[c01-c11]",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/HouseHoldActivities"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid household_unique_code supplied"
+                    },
+                    "404": {
+                        "description": "HouseHold not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    }
+                },
+                "security": [
+                    {
+                        "petstore_auth": [
+                            "write:pets",
+                            "read:pets"
+                        ]
+                    }
+                ]
+            }
+        },
+        "api/household/injurymorbidity/{household_unique_code}": {
+            "put": {
+                "tags": [
+                    "HouseHoldActivities"
+                ],
+                "summary": "Update an existing HouseHoldActivities",
+                "description": "",
+                "operationId": "updateHouseHoldActivities",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "household_unique_code",
+                        "in": "path",
+                        "description": "household_unique_code to filter by",
+                        "required": true,
+                        "type": "string",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "HouseHoldActivities object that needs to be added to the store[e01-e33]",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/HouseHoldActivities"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid household_unique_code supplied"
+                    },
+                    "404": {
+                        "description": "HouseHold not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    }
+                },
+                "security": [
+                    {
+                        "petstore_auth": [
+                            "write:pets",
+                            "read:pets"
+                        ]
+                    }
+                ]
+            }
+        },
+        "api/household/suicideattemptactivity/{household_unique_code}": {
+            "put": {
+                "tags": [
+                    "HouseHoldActivities"
+                ],
+                "summary": "Update an existing HouseHoldActivities",
+                "description": "",
+                "operationId": "updateHouseHoldActivities",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "household_unique_code",
+                        "in": "path",
+                        "description": "household_unique_code to filter by",
+                        "required": true,
+                        "type": "string",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "HouseHoldActivities object that needs to be added to the store[[g01-g03]]",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/HouseHoldActivities"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid household_unique_code supplied"
+                    },
+                    "404": {
+                        "description": "HouseHold not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    }
+                },
+                "security": [
+                    {
+                        "petstore_auth": [
+                            "write:pets",
+                            "read:pets"
+                        ]
+                    }
+                ]
+            }
+        },
+        "api/household/deathconfirmation/{household_unique_code}": {
+            "put": {
+                "tags": [
+                    "HouseHoldActivities"
+                ],
+                "summary": "Update an existing HouseHoldActivities",
+                "description": "",
+                "operationId": "updateHouseHoldActivities",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "household_unique_code",
+                        "in": "path",
+                        "description": "household_unique_code to filter by",
+                        "required": true,
+                        "type": "string",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "HouseHoldActivities object that needs to be added to the store[d01-d07]",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/HouseHoldActivities"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid household_unique_code supplied"
+                    },
+                    "404": {
+                        "description": "HouseHold not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    }
+                },
+                "security": [
+                    {
+                        "petstore_auth": [
+                            "write:pets",
+                            "read:pets"
+                        ]
+                    }
+                ]
+            }
+        },
+        "api/injuryactivity": {
+            "get": {
+                "tags": [
+                    "InjuryActivity"
+                ],
+                "summary": "Find All InjuryActivity",
+                "description": "Returns InjuryActivity overview.",
+                "operationId": "index",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "InjuryActivity overview."
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "InjuryActivity"
+                ],
+                "summary": "Update an existing InjuryActivity",
+                "description": "",
+                "operationId": "updateInjuryActivity",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "household_unique_code is mandatory otherwise you will loose data object that needs to be added to the store[f01-f33]",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/InjuryMortality"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid household_unique_code supplied"
+                    },
+                    "404": {
+                        "description": "InjuryMortality not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    }
+                },
+                "security": [
+                    {
+                        "petstore_auth": [
+                            "write:pets",
+                            "read:pets"
+                        ]
+                    }
+                ]
+            }
+        },
+        "api/injuryactivity/{household_unique_code}": {
+            "get": {
+                "tags": [
+                    "InjuryActivity"
+                ],
+                "summary": "Find All InjuryActivity",
+                "description": "Returns InjuryActivity overview.",
+                "operationId": "getInjuryActivities",
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "household_unique_code",
+                        "in": "path",
+                        "description": "household_unique_code to filter by",
+                        "required": true,
+                        "type": "string",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "InjuryActivity overview."
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    }
+                }
+            }
+        },
+        "api/injuryactivity/roadtransportinjury/{household_unique_code}": {
+            "put": {
+                "tags": [
+                    "InjuryActivity"
+                ],
+                "summary": "Update an existing InjuryActivity",
+                "description": "",
+                "operationId": "updateInjuryActivity",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "household_unique_code",
+                        "in": "path",
+                        "description": "household_unique_code to filter by",
+                        "required": true,
+                        "type": "string",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "InjuryActivity object that needs to be added to the store[h01-h09]",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/InjuryMortality"
+                        }
+                    }
+                ],
+                "responses": {
+                    "400": {
+                        "description": "Invalid household_unique_code supplied"
+                    },
+                    "404": {
+                        "description": "InjuryMortality not found"
+                    },
+                    "405": {
+                        "description": "Validation exception"
+                    }
+                },
+                "security": [
+                    {
+                        "petstore_auth": [
+                            "write:pets",
+                            "read:pets"
+                        ]
+                    }
+                ]
             }
         }
     },

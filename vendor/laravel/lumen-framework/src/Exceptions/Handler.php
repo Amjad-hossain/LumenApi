@@ -30,8 +30,8 @@ class Handler implements ExceptionHandler
      * @param  \Exception  $e
      * @return void
      */
-    public function report(Exception $e)
-    {
+    public function report(Exception $e) {
+
         if ($this->shouldReport($e)) {
             app('Psr\Log\LoggerInterface')->error($e);
         }
@@ -43,8 +43,8 @@ class Handler implements ExceptionHandler
      * @param  \Exception  $e
      * @return bool
      */
-    public function shouldReport(Exception $e)
-    {
+    public function shouldReport(Exception $e) {
+
         return ! $this->shouldntReport($e);
     }
 
@@ -54,8 +54,8 @@ class Handler implements ExceptionHandler
      * @param  \Exception  $e
      * @return bool
      */
-    protected function shouldntReport(Exception $e)
-    {
+    protected function shouldntReport(Exception $e) {
+
         foreach ($this->dontReport as $type) {
             if ($e instanceof $type) {
                 return true;

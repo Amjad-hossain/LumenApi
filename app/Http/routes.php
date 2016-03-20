@@ -16,12 +16,31 @@ $app->get('/', function () use ($app) {
 });
 
 
-$app->get('api/article','ArticleController@index');
+$app->get('api/household','HouseHoldActivitiesController@index');
 
-$app->get('api/article/{id}','ArticleController@getArticle');
+$app->get('api/household/{id}','HouseHoldActivitiesController@getHouseHoldActivities');
 
-$app->post('api/article','ArticleController@saveArticle');
+$app->post('api/household','HouseHoldActivitiesController@saveHouseHoldActivities');
 
-$app->put('api/article/{id}','ArticleController@updateArticle');
+$app->put('api/household/characteristics/{id}','HouseHoldActivitiesController@updateHouseHoldCharacteritics');
 
-$app->delete('api/article/{id}','ArticleController@deleteArticle');
+$app->put('api/household/injurymorbidity/{id}','HouseHoldActivitiesController@updateInjuryMorbidity');
+
+$app->put('api/household/suicideattemptactivity/{id}','HouseHoldActivitiesController@updateHouseHoldSuicideAttemptActivity');
+
+$app->put('api/household/deathconfirmation/{id}','HouseHoldActivitiesController@updateHouseHoldDeathConfirmation');
+
+$app->delete('api/household/{id}','HouseHoldActivitiesController@deleteHouseHoldActivities');
+
+
+
+
+$app->get('api/injuryactivity','InjuryMortalityController@index');
+
+$app->get('api/injuryactivity/{id}','InjuryMortalityController@getInjuryActivities');
+
+$app->post('api/injuryactivity','InjuryMortalityController@createInjuryMortality');
+
+$app->put('api/injuryactivity/roadtransportinjury/{id}','InjuryMortalityController@updateInjuryMortalityForRoadTransportInjuryActivity');
+
+

@@ -24,7 +24,10 @@ $app = require __DIR__.'/../bootstrap/app.php';
 | and wonderful application we have prepared for them.
 |
 */
-//  php -S localhost:8080 -t ./public
-// ./vendor/bin/swagger /home/coder/api/app/Http --output public/
+
+//  php artisan make:migration house_hole_activities --create=house_hold_activities
+//  php artisan migrate
+//  php -S localhost:8080/ -t ./public
+// ./vendor/bin/swagger /home/coder/practice/LumenApi/app/Http --output public/
 
 $app->run();

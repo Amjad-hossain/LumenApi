@@ -412,8 +412,8 @@ class Application extends Container
      *
      * @return \Monolog\Handler\AbstractHandler
      */
-    protected function getMonologHandler()
-    {
+    protected function getMonologHandler() {
+
         return (new StreamHandler(storage_path('logs/lumen.log'), Logger::DEBUG))
                             ->setFormatter(new LineFormatter(null, null, true, true));
     }
@@ -423,8 +423,8 @@ class Application extends Container
      *
      * @return void
      */
-    protected function registerRequestBindings()
-    {
+    protected function registerRequestBindings() {
+
         $this->singleton('Illuminate\Http\Request', function () {
             return Request::capture()->setUserResolver(function () {
                 return $this->make('auth')->user();
@@ -439,8 +439,7 @@ class Application extends Container
      *
      * @return void
      */
-    protected function registerPsrRequestBindings()
-    {
+    protected function registerPsrRequestBindings() {
         $this->singleton('Psr\Http\Message\ServerRequestInterface', function () {
             return (new DiactorosFactory)->createRequest($this->make('request'));
         });
@@ -451,8 +450,7 @@ class Application extends Container
      *
      * @return void
      */
-    protected function registerPsrResponseBindings()
-    {
+    protected function registerPsrResponseBindings() {
         $this->singleton('Psr\Http\Message\ResponseInterface', function () {
             return new PsrResponse();
         });
@@ -463,8 +461,7 @@ class Application extends Container
      *
      * @return void
      */
-    protected function registerTranslationBindings()
-    {
+    protected function registerTranslationBindings() {
         $this->singleton('translator', function () {
             $this->configure('app');
 
@@ -481,8 +478,7 @@ class Application extends Container
      *
      * @return string
      */
-    protected function getLanguagePath()
-    {
+    protected function getLanguagePath() {
         if (is_dir($langPath = $this->basePath().'/resources/lang')) {
             return $langPath;
         } else {
@@ -495,8 +491,7 @@ class Application extends Container
      *
      * @return void
      */
-    protected function registerUrlGeneratorBindings()
-    {
+    protected function registerUrlGeneratorBindings() {
         $this->singleton('url', function () {
             return new Routing\UrlGenerator($this);
         });

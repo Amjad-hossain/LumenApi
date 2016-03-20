@@ -26,4 +26,15 @@ class Kernel extends ConsoleKernel
     {
         //
     }
+
+    /**
+     * OVERRIDING PARENT CLASS
+     * The bootstrap classes for the application.
+     *
+     * @var array
+     */
+    protected $bootstrappers = [
+
+        'Bootstrap\ConfigureLogging' // custom logger bootstrapper
+    ];
 }
